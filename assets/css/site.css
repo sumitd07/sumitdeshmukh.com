@@ -1,0 +1,165 @@
+/* Tokens */
+:root{
+  --bg:#fcfcfa; --ink:#161618; --muted:#9b9b96;
+  --rule:rgba(20,20,20,.10); --link-faint:rgba(20,20,20,.30); --sel:#e9e8e2;
+  --font-body:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  html:not([data-theme="light"]){ --bg:#151516; --ink:#e9e8e3; --muted:#83827b; --rule:rgba(255,255,255,.13); --link-faint:rgba(255,255,255,.28); --sel:#2c2c29; }
+}
+html[data-theme="dark"]{ --bg:#151516; --ink:#e9e8e3; --muted:#83827b; --rule:rgba(255,255,255,.13); --link-faint:rgba(255,255,255,.28); --sel:#2c2c29; }
+
+/* Base */
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background .35s ease,color .35s ease;}
+::selection{background:var(--sel);}
+a{color:var(--ink);text-decoration:none;padding-bottom:1px;background-image:linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--link-faint),var(--link-faint));background-size:0% 1px,100% 1px;background-position:0 100%,0 100%;background-repeat:no-repeat;transition:background-size .32s cubic-bezier(.4,0,.2,1),color .15s ease;}
+a:hover{background-size:100% 1px,100% 1px;}
+nav a{background-image:none;padding-bottom:0;transition:color .18s ease;}
+nav a:hover{color:var(--ink)!important;}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:1px;}
+
+/* Layout */
+.container{max-width:34rem;margin:0 auto;padding:72px 24px 120px;font-size:1.0625rem;line-height:1.65;}
+
+/* Nav */
+.site-nav{display:flex;align-items:center;gap:18px;margin-bottom:56px;font-size:.9375rem;}
+.site-nav a{color:var(--muted);}
+.site-nav a.current{color:var(--ink);}
+
+.theme-toggle{all:unset;cursor:pointer;margin-left:auto;display:flex;align-items:center;color:var(--muted);transition:color .18s ease;}
+.theme-toggle:hover{color:var(--ink);}
+/* all:unset above strips the global :focus-visible outline (equal specificity, later in cascade) — restate it. */
+.theme-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:1px;}
+.theme-icon{width:14px;height:14px;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 0 50%,transparent 50%);transition:transform .4s cubic-bezier(.4,0,.2,1);transform:rotate(0deg);}
+html[data-theme="dark"] .theme-icon{transform:rotate(180deg);}
+
+/* Intro */
+h1{font-size:1.0625rem;font-weight:600;letter-spacing:-.01em;margin:0;}
+.updated{color:var(--muted);margin:2px 0 0;}
+
+/* Bio */
+.bio{display:flex;flex-direction:column;gap:1.35em;margin-top:2.25em;}
+.bio p{margin:0;}
+
+/* Work list */
+h2{font-size:1.0625rem;font-weight:600;margin:3.25em 0 0;}
+.work-list{list-style:none;padding:0;margin:1.1em 0 0;display:flex;flex-direction:column;gap:.6em;}
+.work-list li{display:flex;justify-content:space-between;gap:16px;}
+.work-list li span{color:var(--muted);white-space:nowrap;}
+.see-all{margin:1.1em 0 0;}
+
+/* Local time */
+.local-time{color:var(--muted);margin:3.5em 0 0;font-size:.9375rem;}
+
+@media (prefers-reduced-motion:reduce){
+  *,::before,::after{transition-duration:.01ms!important;}
+}
+
+/* ==========================================================================
+   Work page
+   ========================================================================== */
+
+.work-intro{margin:2.25em 0 0;}
+.ai-intro{margin:1.1em 0 0;}
+
+/* Case-study row list (used for both the professional and AI sections) */
+.cs-list{margin-top:1.1em;border-top:1px solid var(--rule);}
+.cs-list--ai{margin-top:1.5em;}
+.cs-row{border-bottom:1px solid var(--rule);}
+
+.cs-toggle{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:16px;width:100%;padding:.85em 0;}
+/* all:unset above strips the global :focus-visible outline (equal specificity, later in cascade) — restate it. */
+.cs-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:1px;}
+.cs-title{font-weight:500;flex:1 1 auto;}
+.cs-meta{color:var(--muted);white-space:nowrap;font-size:.9375rem;}
+/* Narrow screens: the longest meta ("Affable → Bazaarvoice · 2021–2023") can't fit on
+   one line next to a title + indicator, and nowrap would shove the + past the right rail.
+   Let it wrap right-aligned instead — every row keeps the same right edge. */
+@media (max-width:480px){
+  .cs-meta{white-space:normal;text-align:right;}
+}
+.cs-nb{white-space:nowrap;} /* date ranges never break at the en-dash */
+/* Expand/collapse affordance: + rotates 45° into an × when the panel is open.
+   State lives on aria-expanded, so the no-JS page (all panels expanded) shows × correctly. */
+.cs-ind{flex:none;color:var(--muted);font-size:1.0625rem;line-height:1;transition:transform 200ms cubic-bezier(.23,1,.32,1),color .18s ease;}
+.cs-toggle[aria-expanded="true"] .cs-ind{transform:rotate(45deg);}
+@media (hover:hover) and (pointer:fine){
+  .cs-toggle:hover .cs-ind{color:var(--ink);}
+}
+.cs-toggle:active .cs-ind{transform:scale(.85);}
+.cs-toggle[aria-expanded="true"]:active .cs-ind{transform:rotate(45deg) scale(.85);}
+
+.cs-panel{padding:.4em 0 1.9em;}
+.cs-panel.cs-anim{animation:cs-rise 240ms cubic-bezier(.23,1,.32,1);}
+@keyframes cs-rise{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce){
+  .cs-panel{animation:none!important;}
+  /* State flip + ↔ × stays (it carries meaning); only the motion goes. */
+  .cs-ind{transition:none!important;}
+}
+
+.cs-oneliner{margin:0 0 1.35em;}
+.cs-visit{margin:0 0 1.35em;font-size:.9375rem;}
+
+/* Visual slot — placeholder until real screenshots/diagrams are captured */
+.cs-visual{width:100%;height:300px;margin:0 0 1.6em;border-radius:10px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:.9375rem;}
+
+/* Visual slot — real GIF/screenshot variant. Mixed aspect ratios (landscape + portrait)
+   in a fixed-width column, so the container drops the fixed height and centers
+   whatever the media's natural size is instead.
+   The border/radius moves from the container to the img itself: a centered
+   portrait image (e.g. the BMS Stream GIF) is much narrower than the 34rem
+   column, so a full-width bordered container around it reads as an odd wide
+   box with a narrow image floating inside. Bordering the img instead means
+   the frame always hugs the actual media, landscape or portrait. */
+.cs-visual-media{height:auto;padding:0;overflow:visible;border:none;}
+.cs-visual-media img,
+.cs-visual-media video{display:block;width:100%;height:auto;margin:0 auto;border-radius:10px;border:1px solid var(--rule);}
+/* Portrait GIF (BMS, 590×1280): fixed width = 480px target height × the 590/1280 aspect,
+   so the box reserves ~221×480 before the lazy image loads (no layout shift, and the
+   pre-load box is big enough to intersect for lazy loading). */
+.cs-visual-media--portrait img,
+.cs-visual-media--portrait video{width:calc(480px * 590 / 1280);max-width:100%;}
+
+.cs-beats{display:flex;flex-direction:column;gap:1.25em;}
+.cs-beat p{margin:0;}
+.cs-beat-label{font-size:.8125rem;letter-spacing:.02em;color:var(--muted);margin-bottom:.35em;}
+
+.cs-deep{margin-top:1.5em;}
+.cs-deep p{margin:0 0 1em;}
+
+.cs-built-note{font-style:italic;color:var(--muted);font-size:.9375rem;margin:1.25em 0 0;}
+
+.cs-callout{margin-top:1.4em;padding-left:1em;border-left:2px solid var(--rule);}
+.cs-callout p{margin:0;}
+.cs-honest-miss{font-style:italic;color:var(--muted);}
+
+.cs-tags{display:flex;gap:14px;flex-wrap:wrap;margin-top:1.5em;color:var(--muted);font-size:.9375rem;}
+
+/* ==========================================================================
+   Journey page
+   ========================================================================== */
+
+.journey-list{display:flex;flex-direction:column;margin-top:2.5em;}
+.journey-stop{padding:1.9em 0;border-top:1px solid var(--rule);}
+
+.journey-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+.journey-dates{color:var(--muted);white-space:nowrap;font-size:.9375rem;}
+
+/* Major stops (h2): full-weight company name, full-color narrative, achievement list */
+.journey-company{font-size:1.0625rem;font-weight:600;margin:0;}
+.journey-role{color:var(--muted);margin:.2em 0 0;font-size:.9375rem;}
+.journey-narrative{margin:1em 0 0;}
+
+.journey-achievements{list-style:none;padding:0;margin:1em 0 0;display:flex;flex-direction:column;gap:.5em;}
+.journey-achievement{padding-left:1em;border-left:2px solid var(--rule);color:var(--muted);font-size:.9375rem;line-height:1.55;}
+
+/* Minor stops (h3): lighter weight company name, muted narrative, no achievements (recency taper) */
+.journey-company--minor{font-weight:500;color:var(--ink);}
+.journey-narrative-minor{color:var(--muted);margin:.7em 0 0;font-size:.9375rem;line-height:1.55;}
+
+.journey-resume-extras{margin-top:3em;padding-top:1.9em;border-top:1px solid var(--rule);}
+.journey-resume-note{margin:0;}
+
+@media print{ nav,#resume-extras{display:none !important;} }

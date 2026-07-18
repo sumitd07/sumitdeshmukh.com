@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Sumit Deshmukh</title>
+<meta name="description" content="Product leadership case studies from Affable and Bazaarvoice, plus a growing set of AI products designed and spec'd solo, engineered by AI agents.">
+<link rel="canonical" href="https://sumitdeshmukh.com/work.html">
+<meta property="og:title" content="Work — Sumit Deshmukh">
+<meta property="og:description" content="Product leadership case studies from Affable and Bazaarvoice, plus a growing set of AI products designed and spec'd solo, engineered by AI agents.">
+<meta property="og:url" content="https://sumitdeshmukh.com/work.html">
+<meta property="og:type" content="website">
+<!-- Runs before first paint (and before site.css applies theme-dependent colors) to avoid a light/dark flash. -->
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Ccircle cx='4' cy='4' r='4' fill='%23161618'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./assets/css/site.css">
+<script src="./assets/js/site.js" defer></script>
+<script src="./assets/js/work.js" defer></script>
+</head>
+<body>
+<main class="container">
+
+  <nav class="site-nav" aria-label="Primary">
+    <a href="./">Home</a>
+    <a href="journey.html">Journey</a>
+    <a href="work.html" class="current" aria-current="page">Work</a>
+    <button type="button" class="theme-toggle" aria-label="Toggle dark mode" hidden>
+      <span class="theme-icon"></span>
+    </button>
+  </nav>
+
+  <h1>Work</h1>
+  <p class="updated">Product leadership, and products built solo with AI agents</p>
+
+  <p class="work-intro">Case studies from my product leadership roles. Each opens in place: the situation, what I drove, and what changed. Below them, products I build on my own — my designs, specs, and test plans, with AI agents executing the engineering.</p>
+
+  <h2>Product leadership</h2>
+  <div class="cs-list">
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-creator-search">
+        <span class="cs-title">AI Creator Search</span>
+        <span class="cs-meta">Affable → Bazaarvoice · <span class="cs-nb">2021–2023</span></span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-creator-search">
+        <p class="cs-oneliner" tabindex="-1">Natural-language creator discovery across an index of six million creators.</p>
+        <!-- Visual slots are placeholders until real screenshots/diagrams replace them -->
+        <div class="cs-visual cs-visual-media">
+          <video class="cs-visual-vid" width="1088" height="612" data-poster="assets/img/ai-creator-search-poster.jpg" preload="none" loop muted playsinline aria-label="Screen recording of AI Creator Search returning creator results for a natural-language query">
+            <source src="assets/img/ai-creator-search.webm" type="video/webm">
+            <source src="assets/img/ai-creator-search.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">The situation</div>
+            <p>A seed-stage startup selling creator discovery. Keyword search could not express what brands were actually looking for — "creators like this one" — across an index of six million.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What I drove</div>
+            <p>As first product hire, took AI search from concept to platform: semantic, visual, multilingual, and lookalike retrieval. After the acquisition, took over search quality — built the evaluation framework and ran the observability program against it.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What changed</div>
+            <p>Affable's search became the primary creator-sourcing engine inside Bazaarvoice's platform. The quality program took demographic model accuracy from 72% to 93% and cut latency 68%.</p>
+          </div>
+        </div>
+        <div class="cs-deep">
+          <div class="cs-beat-label">In depth</div>
+          <p>Through the early stages of the creator discovery launch, search quality was assessed anecdotally — a client complaint, a demo that went well — on top of basic volume and query data. The index held over six million creators, and whether the top twenty results for a query were the right twenty went unmeasured. At seed stage, with one product person, that was a deliberate trade-off.</p>
+          <p>After the acquisition, Creator Search was the primary creator-sourcing engine inside an enterprise platform, which meant its quality needed to be measurable: a golden set of queries with agreed-correct results, an accuracy metric the team could interrogate, and an observability program to catch regressions before clients did.</p>
+          <p>The first measurement put demographic model accuracy at 72%. That baseline turned an open question into a prioritized backlog, with every failure case in the golden set becoming an item of work. The program closed at 93% accuracy, with latency down 68%. The same period shipped a creator brand-safety score on the GARM framework, reading image, video, and caption to flag risk at the point of discovery.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Retrieval</span>
+          <span>Evals</span>
+          <span>Search Quality</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-integrated-sampling">
+        <span class="cs-title">Integrated Sampling</span>
+        <span class="cs-meta">Bazaarvoice · <span class="cs-nb">2023–2026</span></span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-integrated-sampling">
+        <p class="cs-oneliner" tabindex="-1">Three tools, one managed product: sampling, ambassadors, and paid creators.</p>
+        <div class="cs-visual cs-visual-media">
+          <video class="cs-visual-vid" width="1088" height="956" data-poster="assets/img/integrated-sampling-poster.jpg" preload="none" loop muted playsinline aria-label="Screen recording of the Integrated Sampling product">
+            <source src="assets/img/integrated-sampling.webm" type="video/webm">
+            <source src="assets/img/integrated-sampling.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">The situation</div>
+            <p>Enterprise clients bought sampling, ambassadors, and paid creators as three disconnected tools, which meant three sales motions, three roadmaps, and no unified value story.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What I drove</div>
+            <p>Authored the investment case that reset portfolio priorities, then architected the unified offering: a 9.5M+ member community, ambassadors, and paid creators sold and operated as one managed product. Held Sales, Finance, and four engineering teams to one definition of it.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What changed</div>
+            <p>Enterprise clients can now buy content sourcing by community mix rather than assembling it from three tools. It anchored a $16M YoY growth category.</p>
+          </div>
+        </div>
+        <div class="cs-deep">
+          <div class="cs-beat-label">In depth</div>
+          <p>The three tools came with three roadmaps and three owners, each with commitments already made to clients and leadership. The investment case argued two things: that the portfolio's growth targets did not work with the offerings sold separately, and that fixing this meant stopping some funded work to make room. The second argument consumed most of the alignment effort, because a priority reset means walking back commitments already made by other owners, which had to be negotiated stakeholder by stakeholder.</p>
+          <p>What shipped is one managed product: the 9.5M-member sampling community, ambassadors, and paid creators packaged, sold, and operated together. A large share of the work went into coordination, since the offering definition had to hold simultaneously across Sales (one thing to sell), Finance (one thing to price), and four engineering teams (one architecture to build against) without drifting every planning cycle.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Portfolio Strategy</span>
+          <span>Sampling</span>
+          <span>Enterprise</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-creator-payments">
+        <span class="cs-title">Creator Payments</span>
+        <span class="cs-meta">Bazaarvoice · <span class="cs-nb">2023–2026</span></span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-creator-payments">
+        <p class="cs-oneliner" tabindex="-1">Bazaarvoice's first creator payments platform: strategy, build-versus-buy call, and the build itself.</p>
+        <div class="cs-visual"><span>payment-flow diagram</span></div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">The situation</div>
+            <p>Deals kept dying at the same objection: the platform could not pay creators. The company had never moved money before.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What I drove</div>
+            <p>Built the payments strategy and roadmap, including a decision framework for build-versus-buy, defended the build decision to leadership, and shipped Bazaarvoice's first creator payments platform end to end (admin-led managed transfers, full transaction history) across Legal, FinOps, and Finance.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What changed</div>
+            <p>It addressed 28% of previously lost Affable deals and unblocked 24 stalled commercial conversations. Payments now runs underneath Integrated Sampling.</p>
+          </div>
+        </div>
+        <div class="cs-deep">
+          <div class="cs-beat-label">In depth</div>
+          <p>The framework evaluated build-versus-buy against the roadmap rather than against the deal in front of us. Payments was not going to stay a one-off checkbox: sampling payouts, ambassador incentives, and affiliate commissions were all heading toward the same rail within eighteen months, and a vendor integration would have to be redone for each of them. Owning the rail meant building it once.</p>
+          <p>There was reasonable pushback. Finance preferred a specific vendor, Legal preferred the smallest possible compliance surface, and a credible vendor already existed for this exact use case, so taking on money-movement risk voluntarily required strong justification. The framework resolved it on a narrow point: the vendor route solved the immediate deal and left the roadmap use cases — payouts, incentives, commissions — each requiring its own re-integration.</p>
+          <p>The build scope covered admin-led managed transfers, full transaction history, and a new compliance path defined with Legal and FinOps. After launch it addressed 28% of previously lost Affable deals and reopened 24 stalled commercial conversations, and the platform now serves as the payment rail under Integrated Sampling.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Payments</span>
+          <span>Build-vs-Buy</span>
+          <span>Compliance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-ai-native-transition">
+        <span class="cs-title">AI-Native Team Transition</span>
+        <span class="cs-meta">Bazaarvoice · <span class="cs-nb">2023–2026</span></span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-ai-native-transition">
+        <p class="cs-oneliner" tabindex="-1">A specialist team, moved to AI-native ways of working.</p>
+        <div class="cs-visual"><span>before/after operating-model diagram</span></div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">The situation</div>
+            <p>The portfolio's roadmap was moving toward AI features faster than the team's ways of working were. Closing that gap was not a planned initiative, so it had to be argued for change by change.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What I drove</div>
+            <p>Changed the team's operating model: embedded AI prototyping into scoping, stood up an evals discipline, set the agentification roadmap for creator marketing workflows, backed an agent prototype ahead of engineering capacity, secured LLM tooling, and coached PMs through their first AI features.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What changed</div>
+            <p>The team now ships AI features with an evaluation discipline built in. Intelligent Product Tagging went from 10% to roughly 60% model accuracy in a year across 25 enterprise pilot clients, with phased OKRs met.</p>
+          </div>
+        </div>
+        <div class="cs-deep">
+          <div class="cs-beat-label">In depth</div>
+          <p>The shift ran as a sequence of small changes rather than a program, with the case for each made separately. LLM tooling was argued for and secured. AI prototyping was embedded into the scoping process, so feasibility questions were answered before commitment instead of during the build. An agent prototype (on Mastra) was built ahead of engineering capacity, accepted as an unresourced bet so the team would have a working reference point when capacity opened up.</p>
+          <p>The clearest measurable evidence came from Intelligent Product Tagging, which was stuck around 10% model accuracy with no evaluation framework to explain why. Under the new operating model the team built a golden set, read failure cases against it, and treated each prompt revision as a hypothesis to test. Accuracy reached roughly 60% within a year across 25 enterprise pilot clients, with phased OKRs met along the way. That discipline is now the default for the team's AI work.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Coaching</span>
+          <span>Evals</span>
+          <span>Agents</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-bms-stream">
+        <span class="cs-title">BMS Stream</span>
+        <span class="cs-meta">BookMyShow · <span class="cs-nb">2019–2021</span></span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-bms-stream">
+        <p class="cs-oneliner" tabindex="-1">Transactional video-on-demand, built and launched in weeks when cinemas closed.</p>
+        <div class="cs-visual cs-visual-media cs-visual-media--portrait">
+          <video class="cs-visual-vid" width="446" height="968" data-poster="assets/img/bms-stream-poster.jpg" preload="none" loop muted playsinline aria-label="Screen recording of BMS Stream on mobile: browsing and playing a title">
+            <source src="assets/img/bms-stream.webm" type="video/webm">
+            <source src="assets/img/bms-stream.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">The situation</div>
+            <p>March 2020: cinemas shut and the core business went to zero. A transactional streaming product was needed in weeks.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What I drove</div>
+            <p>Launched transactional VoD across web, mobile, and TV; owned discovery, checkout, and cross-device end to end, re-prioritizing weekly as the market moved.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What changed</div>
+            <p>It carried the company's revenue while theatres stayed shut: ~80% of revenue at ~30% MoM growth. Support voice volume came down 30%.</p>
+          </div>
+        </div>
+        <div class="cs-deep">
+          <div class="cs-beat-label">In depth</div>
+          <p>Cinemas closed in March 2020 and the company's core revenue went to zero with them, which compressed the discovery phase to near zero as well: the brief was a transactional streaming product on web, mobile, and TV, live in weeks. Alignment that would normally take a quarter happened in days, and the resulting plan went stale almost weekly as the market moved. Owning discovery, checkout, and cross-device in that environment meant re-deciding every week which of the previous week's calls still held.</p>
+          <p>It carried roughly 80% of company revenue, growing about 30% month over month, for as long as the theatres stayed shut. The second metric is support: voice volume came down 30%, through a reworked Help section and contextual chat, which scaled better than adding support capacity under that load.</p>
+        </div>
+        <div class="cs-tags">
+          <span>0→1 Launch</span>
+          <span>Video on Demand</span>
+          <span>Consumer</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Built with AI</h2>
+  <p class="ai-intro">Products I build on my own: I design them, write the specs, and direct AI agents through the engineering. Each ships with a written strategy, a decision log, and a test plan. New ones are added as they're built.</p>
+  <div class="cs-list cs-list--ai">
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-decoder">
+        <span class="cs-title">Decoder</span>
+        <span class="cs-meta">Live</span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-decoder">
+        <p class="cs-oneliner" tabindex="-1">A dictionary for the language of AI: a web app and Chrome extension that underlines AI terms on any page.</p>
+        <p class="cs-visit"><a href="https://aidecoder.app" rel="noopener">Try it live at aidecoder.app →</a> <a href="https://github.com/sumitd07/AI-Decoder" rel="noopener">GitHub →</a></p>
+        <div class="cs-visual cs-visual-media">
+          <video class="cs-visual-vid" width="1088" height="646" data-poster="assets/img/decoder-poster.jpg" preload="none" loop muted playsinline aria-label="Screen recording of the Decoder extension underlining and defining AI terms on a page">
+            <source src="assets/img/decoder.webm" type="video/webm">
+            <source src="assets/img/decoder.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">How it's built</div>
+            <p>Run as a product org of one: strategy doc and taxonomy, a content style contract that every batch is validated against, Supabase with row-level security, and store submission.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">In the weeds</div>
+            <p>The content pipeline runs scheduled batch generation against a database, sized for a glossary in the thousands. Hand-curation stopped scaling at a few hundred entries, which forced the redesign.</p>
+          </div>
+        </div>
+        <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
+        <div class="cs-callout">
+          <div class="cs-beat-label">FIELD NOTE</div>
+          <p>248 glossary entries were violating the content style contract — inconsistent tone and missing fields, the drift that accumulates when entries are written by hand for long enough. The data was rewritten to match the contract rather than the display code patched to tolerate it, and the validator now fails any future batch that breaks the rule.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Content Pipeline</span>
+          <span>Data Quality</span>
+          <span>Chrome Extension</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-expense-tracker">
+        <span class="cs-title">Expense Tracker</span>
+        <span class="cs-meta">Working build</span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-expense-tracker">
+        <p class="cs-oneliner" tabindex="-1">Local-first personal finance that ingests Gmail statements and categorizes spending with an LLM, entirely on-device.</p>
+        <p class="cs-visit"><a href="https://github.com/sumitd07/expense-tracker" rel="noopener">GitHub →</a></p>
+        <div class="cs-visual cs-visual-media">
+          <video class="cs-visual-vid" width="1088" height="590" data-poster="assets/img/expense-tracker-poster.jpg" preload="none" loop muted playsinline aria-label="Screen recording of the Ledger expense tracker: monthly spend overview, category breakdown with month-over-month deltas, and the spend trend chart">
+            <source src="assets/img/expense-tracker.webm" type="video/webm">
+            <source src="assets/img/expense-tracker.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">How it's built</div>
+            <p>LLM categorization sits behind a confidence gate: low-certainty rows route to human review instead of a silent guess. A golden-set eval gates every prompt change before it ships.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">In the weeds</div>
+            <p>Corrections are logged append-only and fed back as few-shot examples. The suite runs 100+ automated tests. The same evals discipline from the Bazaarvoice work, applied solo.</p>
+          </div>
+        </div>
+        <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
+        <div class="cs-callout">
+          <div class="cs-beat-label">FIELD NOTE</div>
+          <p>Deleted the local database out of an old demo-phase habit; it held the real encrypted Gmail token rather than test data. No code failed. The gap was in process: demo-phase habits had not been retired when the build started touching real state. The rule changed the same day, and the incident is recorded in the decision log under its own number.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Evals</span>
+          <span>Privacy</span>
+          <span>Local-First</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-pricewatch">
+        <span class="cs-title">Pricewatch</span>
+        <span class="cs-meta">In review</span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-pricewatch">
+        <p class="cs-oneliner" tabindex="-1">Amazon price intelligence in the browser: daily checks, below-target alerts, trend forecasts.</p>
+        <p class="cs-visit"><a href="https://github.com/sumitd07/pricewatch" rel="noopener">GitHub →</a></p>
+        <div class="cs-visual"><span>popup with sparklines</span></div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">How it's built</div>
+            <p>A dual-mode parser (DOM, plus HTML-regex for the service worker) reads product pages. Linear-regression forecasting runs over price history, backed by a full logic-test suite.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">In the weeds</div>
+            <p>The edge cases came from testing against real product pages rather than fixtures. That is how the phantom-price bug below was caught.</p>
+          </div>
+        </div>
+        <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
+        <div class="cs-callout">
+          <div class="cs-beat-label">FIELD NOTE</div>
+          <p>An unavailable product was recording a related-product carousel's price as its own, and one false below-target alert fired before it was caught. Diagnosed against the real Amazon page. The fix deleted the page-wide price fallback entirely: when the page carries no reliable price, recording nothing is the correct outcome.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Forecasting</span>
+          <span>Chrome Extension</span>
+          <span>On-Device</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-jobsaver">
+        <span class="cs-title">JobSaver</span>
+        <span class="cs-meta">Working build</span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-jobsaver">
+        <p class="cs-oneliner" tabindex="-1">The job search as a pipeline: posting in, tailored cover letter out.</p>
+        <div class="cs-visual"><span>dashboard screenshot</span></div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">How it's built</div>
+            <p>A multi-step pipeline runs from a clipped LinkedIn posting through research and resume selection to a drafted cover letter, with a per-run token cap on every step.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">In the weeds</div>
+            <p>The letter generator reads a personal writing style guide live, as its contract. The resume library does text extraction, and the whole thing runs Dockerized in one command.</p>
+          </div>
+        </div>
+        <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
+        <div class="cs-tags">
+          <span>LLM Pipelines</span>
+          <span>Agents</span>
+          <span>Cost Controls</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="local-time"><span id="local-time">—</span> in Mumbai, India</p>
+
+</main>
+</body>
+</html>
