@@ -342,6 +342,9 @@ html[data-theme="dark"] .dmx .savebtn.is-saved{background:oklch(0.30 0.045 150);
 .journey-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
 .journey-dates{color:var(--muted);white-space:nowrap;font-size:.9375rem;}
 
+/* Company logo (inline with the name, colored, app-icon style) */
+.journey-logo{width:22px;height:22px;object-fit:contain;border-radius:4px;vertical-align:-4px;margin-right:7px;}
+
 /* Major stops (h2): full-weight company name, full-color narrative, achievement list */
 .journey-company{font-size:1.0625rem;font-weight:600;margin:0;}
 .journey-role{color:var(--muted);margin:.2em 0 0;font-size:.9375rem;}
