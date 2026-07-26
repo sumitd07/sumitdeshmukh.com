@@ -135,7 +135,7 @@ h2{font-size:1.0625rem;font-weight:600;margin:3.25em 0 0;}
 .cs-list--ai{margin-top:1.5em;}
 .cs-row{border-bottom:1px solid var(--rule);}
 
-.cs-toggle{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:16px;width:100%;padding:.85em 0;}
+.cs-toggle{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:16px;width:100%;padding:.85em 0;scroll-margin-top:24px;}
 /* all:unset above strips the global :focus-visible outline (equal specificity, later in cascade) — restate it. */
 .cs-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:1px;}
 .cs-title{font-weight:500;flex:1 1 auto;}

@@ -98,7 +98,9 @@
       collapseAllExcept(targetBtn);
       reveal(panel);
       targetBtn.setAttribute('aria-expanded', 'true');
-      panel.scrollIntoView({ block: 'center' });
+      // Land on the case-study heading (the toggle), not the middle of its
+      // panel — otherwise the title sits scrolled off above the viewport.
+      targetBtn.scrollIntoView({ block: 'start' });
     }
   }
 })();
