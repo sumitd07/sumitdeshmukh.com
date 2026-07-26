@@ -93,9 +93,6 @@
       </button>
       <div class="cs-panel" id="cs-brand-safety">
         <p class="cs-oneliner" tabindex="-1">A creator brand-safety score that ranks by harm severity across image, video, caption, and comments.</p>
-        <div class="cs-visual cs-visual-media">
-          <img src="assets/img/brand-safety-model.svg" width="1000" height="800" loading="lazy" alt="Two creators with the same 200-post feed. Creator A has one flagged post inciting racial violence and scores 0.5 percent under the v1 volume model, ranking safer than Creator B, who has ten flagged posts about alcohol at 5 percent. The v2 harm model weights GARM categories by severity, recency, and frequency and ranks Creator A high risk, Creator B low risk.">
-        </div>
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">The Situation</div>
@@ -172,7 +169,6 @@
       </button>
       <div class="cs-panel" id="cs-creator-payments">
         <p class="cs-oneliner" tabindex="-1">Bazaarvoice's first creator payments platform: strategy, build-versus-buy call, and the build itself.</p>
-        <div class="cs-visual"><span>payment-flow diagram</span></div>
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">The Situation</div>
@@ -304,24 +300,31 @@
              real glossary data. Progressive enhancement: the block ships hidden and
              decoder-demo.js reveals it; save/remove is in-memory only. -->
         <div class="dmx" data-dm-demo hidden>
-          <p class="dmx-kicker">Live demo</p>
-          <p class="dmx-lead">Decoder subtly underlines AI terms on any page. Click an <span class="dmx-hintword">underlined</span> term to understand it in place, save it, or open the full card.</p>
-          <div class="dmx-frame">
-            <div class="dmx-frame-bar">
-              <span class="dmx-frame-dots"><i></i><i></i><i></i></span>
-              <span class="dmx-frame-url">medium.com/how-does-rag-work</span>
+          <div class="dmx-shell">
+            <div class="dmx-head">
+              <span class="dmx-badge"><span class="dmx-live-dot" aria-hidden="true"></span>Live demo</span>
+              <span class="dmx-head-note">Interactive &mdash; try it right here, no install</span>
             </div>
-            <div class="dmx-page">
-              <p class="dmx-page-h">How does RAG work?</p>
-              <p class="dmx-article">Nearly every AI product today is a mix of the same handful of ideas. Most assistants lean on <span class="jterm" data-term="rag">RAG</span> to look things up before they answer &mdash; which quietly runs on <span class="jterm" data-term="embeddings">embeddings</span> and mostly exists to work around the <span class="jterm" data-term="contextwindow">context window</span>. Turn the <span class="jterm" data-term="temperature">temperature</span> up and replies get more creative, but also more prone to <span class="jterm" data-term="hallucination">hallucination</span>. Teams reach for <span class="jterm" data-term="finetuning">fine-tuning</span> less than they used to, and increasingly wire models into real tools through <span class="jterm" data-term="mcp">MCP</span> so an <span class="jterm" data-term="agents">agent</span> can actually get work done.</p>
+            <div class="dmx-body">
+              <p class="dmx-lead">Decoder subtly underlines AI terms on any page. Click an <span class="dmx-hintword">underlined</span> term to understand it in place, save it, or open the full card.</p>
+              <div class="dmx-frame">
+                <div class="dmx-frame-bar">
+                  <span class="dmx-frame-dots"><i></i><i></i><i></i></span>
+                  <span class="dmx-frame-url">medium.com/how-does-rag-work</span>
+                </div>
+                <div class="dmx-page">
+                  <p class="dmx-page-h">How does RAG work?</p>
+                  <p class="dmx-article">Nearly every AI product today is a mix of the same handful of ideas. Most assistants lean on <span class="jterm" data-term="rag">RAG</span> to look things up before they answer &mdash; which quietly runs on <span class="jterm" data-term="embeddings">embeddings</span> and mostly exists to work around the <span class="jterm" data-term="contextwindow">context window</span>. Turn the <span class="jterm" data-term="temperature">temperature</span> up and replies get more creative, but also more prone to <span class="jterm" data-term="hallucination">hallucination</span>. Teams reach for <span class="jterm" data-term="finetuning">fine-tuning</span> less than they used to, and increasingly wire models into real tools through <span class="jterm" data-term="mcp">MCP</span> so an <span class="jterm" data-term="agents">agent</span> can actually get work done.</p>
+                </div>
+              </div>
+              <div class="dmx-saved" data-dm-saved>
+                <div class="dmx-saved-head">Saved terms</div>
+                <p class="dmx-saved-empty" id="dmEmpty">Open a term and hit Save &mdash; your list builds here.</p>
+                <div class="dmx-saved-rows" id="dmChips"></div>
+              </div>
+              <p class="dmx-note">Saving is illustrative here &mdash; nothing is stored. In the real app your saved terms sync across the web app and extension.</p>
             </div>
           </div>
-          <div class="dmx-saved" data-dm-saved>
-            <div class="dmx-saved-head">Saved terms <span class="dmx-saved-count" id="dmCount">0</span></div>
-            <p class="dmx-saved-empty" id="dmEmpty">Open a term and hit Save &mdash; your list builds here.</p>
-            <div class="dmx-saved-rows" id="dmChips"></div>
-          </div>
-          <p class="dmx-note">Saving is illustrative here &mdash; nothing is stored. In the real app your saved terms sync across the web app and extension.</p>
           <div id="dmPopRoot"></div>
           <div id="dmModalRoot"></div>
           <div id="dmToastRoot"></div>
@@ -397,7 +400,6 @@
       <div class="cs-panel" id="cs-pricewatch">
         <p class="cs-oneliner" tabindex="-1">Amazon price intelligence in the browser: daily checks, below-target alerts, trend forecasts.</p>
         <p class="cs-visit"><a href="https://github.com/sumitd07/pricewatch" rel="noopener">GitHub →</a></p>
-        <div class="cs-visual"><span>popup with sparklines</span></div>
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">How It's Built</div>
@@ -429,7 +431,6 @@
       </button>
       <div class="cs-panel" id="cs-jobsaver">
         <p class="cs-oneliner" tabindex="-1">The job search as a pipeline: posting in, tailored cover letter out.</p>
-        <div class="cs-visual"><span>dashboard screenshot</span></div>
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">How It's Built</div>

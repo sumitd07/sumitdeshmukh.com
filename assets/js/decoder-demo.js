@@ -137,7 +137,6 @@
   var modalRoot = root.querySelector('#dmModalRoot');
   var toastRoot = root.querySelector('#dmToastRoot');
   var chipsRoot = root.querySelector('#dmChips');
-  var countEl = root.querySelector('#dmCount');
   var emptyEl = root.querySelector('#dmEmpty');
 
   var saved = {};
@@ -283,7 +282,6 @@
   }
   function renderSaved(){
     var ids = CONCEPTS.map(function(c){return c.id;}).filter(isSaved);
-    countEl.textContent = String(ids.length);
     emptyEl.hidden = ids.length > 0;
     chipsRoot.innerHTML = '';
     ids.forEach(function(id){
