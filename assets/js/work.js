@@ -98,9 +98,17 @@
       collapseAllExcept(targetBtn);
       reveal(panel);
       targetBtn.setAttribute('aria-expanded', 'true');
-      // Land on the case-study heading (the toggle), not the middle of its
-      // panel — otherwise the title sits scrolled off above the viewport.
-      targetBtn.scrollIntoView({ block: 'start' });
+      // Land on the case-study heading (the toggle). The fragment id lives on
+      // the panel *below* the heading, so the browser's own jump to it lands
+      // too low. Re-run our scroll after that native jump — on the next frames
+      // and once on load — so the title ends up at the top of the viewport.
+      var toHeading = function () { targetBtn.scrollIntoView({ block: 'start' }); };
+      toHeading();
+      requestAnimationFrame(function () { requestAnimationFrame(toHeading); });
+      window.addEventListener('load', function onLoad() {
+        toHeading();
+        window.removeEventListener('load', onLoad);
+      });
     }
   }
 })();
