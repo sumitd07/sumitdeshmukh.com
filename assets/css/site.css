@@ -77,19 +77,19 @@ h2{font-size:1.0625rem;font-weight:600;margin:3.25em 0 0;}
 /* Impact in numbers — the page's one loud moment. Everything else sits at 17px;
    here the numerals jump to display scale so the proof reads in a glance. Plain
    hairline grid, no cards (the superseded tile design stays retired — D-1). */
-.metric-grid{margin:0;display:grid;grid-template-columns:repeat(3,1fr);column-gap:1.6em;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
-.metric{padding:1.1em 0;}
+.metric-grid{margin:0;display:flex;justify-content:space-between;gap:1.6em;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.metric{padding:1.1em 0;flex:none;}
 .metric-value{margin:0;font-size:2rem;font-weight:600;letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums;}
 .metric-unit{font-size:1rem;font-weight:500;color:var(--muted);letter-spacing:0;}
 /* Label: what the number is (readable), then where it came from (fainter, own
    line) — the source anchors each stat to a real product so it can't read as a
    floating figure. */
-.metric-label{margin:.4em 0 0;color:var(--ink-2);font-size:.875rem;line-height:1.45;}
+.metric-label{margin:.4em 0 0;color:var(--ink-2);font-size:.875rem;line-height:1.45;white-space:nowrap;}
 .metric-src{display:block;color:var(--muted);}
 /* Three across is tight on a phone; stack to a hairline-separated list, number
    above its label, so each stat stays a clean self-contained unit. */
 @media (max-width:480px){
-  .metric-grid{grid-template-columns:1fr;border-top:0;border-bottom:0;}
+  .metric-grid{flex-direction:column;gap:0;border-top:0;border-bottom:0;}
   .metric{padding:.95em 0;border-top:1px solid var(--rule);}
   .metric:last-child{border-bottom:1px solid var(--rule);}
 }
