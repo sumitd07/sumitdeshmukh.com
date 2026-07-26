@@ -13,9 +13,14 @@
 <!-- Runs before first paint (and before site.css applies theme-dependent colors) to avoid a light/dark flash. -->
 <script>(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Ccircle cx='4' cy='4' r='4' fill='%23161618'/%3E%3C/svg%3E">
+<!-- Fonts for the embedded Decoder demo (Inter + Newsreader), matching the real app. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/css/site.css">
 <script src="./assets/js/site.js" defer></script>
 <script src="./assets/js/work.js" defer></script>
+<script src="./assets/js/decoder-demo.js" defer></script>
 </head>
 <body>
 <main class="container">
@@ -76,6 +81,44 @@
           <span>Retrieval</span>
           <span>Evals</span>
           <span>Search Quality</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-brand-safety">
+        <span class="cs-title">Creator Brand Safety</span>
+        <span class="cs-meta">Bazaarvoice · <span class="cs-nb">2023–2026</span></span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-brand-safety">
+        <p class="cs-oneliner" tabindex="-1">A creator brand-safety score that ranks by harm severity across image, video, caption, and comments.</p>
+        <div class="cs-visual cs-visual-media">
+          <img src="assets/img/brand-safety-model.svg" width="1000" height="800" loading="lazy" alt="Two creators with the same 200-post feed. Creator A has one flagged post inciting racial violence and scores 0.5 percent under the v1 volume model, ranking safer than Creator B, who has ten flagged posts about alcohol at 5 percent. The v2 harm model weights GARM categories by severity, recency, and frequency and ranks Creator A high risk, Creator B low risk.">
+        </div>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">The Situation</div>
+            <p>Brand-safety scores help brands identify risky creators during discovery. The original model used a proportional scoring system, where risk was determined by the percentage of flagged posts in a feed. This meant a creator with one post inciting violence across 200 posts was ranked as "safer" than a creator with ten posts about alcohol. This ranking was driven by volume rather than the severity of the violation.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What I Drove</div>
+            <p>I replaced the proportional model with a new system where harm is weighted by severity, analyzed across all modalities, and aligned with each brand's specific risk policy.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">What Changed</div>
+            <p>The score now prioritizes harm: a single instance of incitement triggers a high-risk rating, while multiple instances of low-severity content (like alcohol) result in a low-risk rating. Severity, recency, and frequency now drive the score by analyzing images, videos, captions, and comments. The system also includes on-demand deep scans and human reviews for contested cases.</p>
+          </div>
+        </div>
+        <div class="cs-deep">
+          <div class="cs-beat-label">In Depth</div>
+          <p>A proportional score treats every flagged post as equal and rewards a large, mostly clean feed. The question a brand is actually asking is closer to a gate: is there anything here that disqualifies this creator. One serious violation can be disqualifying on its own, however small its share of the feed, so the model needed severity to override volume rather than average against it.</p>
+          <p>The rebuild scored GARM harm categories weighted by severity, recency, and frequency, reading image, video, caption, and comments so that risk carried in a video or a comment thread was not missed by a caption-only pass. Brands set their own tolerances against the GARM categories, so the same creator can read safe for one brand and risky for another. An on-demand deep scan let a reviewer pull a closer read on a specific creator, and human review handled the contested cases the model flagged but could not settle.</p>
+        </div>
+        <div class="cs-tags">
+          <span>Metric Design</span>
+          <span>Trust & Safety</span>
+          <span>Risk Tradeoffs</span>
         </div>
       </div>
     </div>
@@ -255,6 +298,35 @@
             <source src="assets/img/decoder.mp4" type="video/mp4">
           </video>
         </div>
+
+        <!-- Live in-page demo — a faithful port of the Decoder's own popover and
+             full-card UI (fonts, tier badges, lens tabs, related links) driven by the
+             real glossary data. Progressive enhancement: the block ships hidden and
+             decoder-demo.js reveals it; save/remove is in-memory only. -->
+        <div class="dmx" data-dm-demo hidden>
+          <p class="dmx-kicker">Live demo</p>
+          <p class="dmx-lead">Decoder subtly underlines AI terms on any page. Click an <span class="dmx-hintword">underlined</span> term to understand it in place, save it, or open the full card.</p>
+          <div class="dmx-frame">
+            <div class="dmx-frame-bar">
+              <span class="dmx-frame-dots"><i></i><i></i><i></i></span>
+              <span class="dmx-frame-url">medium.com/how-does-rag-work</span>
+            </div>
+            <div class="dmx-page">
+              <p class="dmx-page-h">How does RAG work?</p>
+              <p class="dmx-article">Nearly every AI product today is a mix of the same handful of ideas. Most assistants lean on <span class="jterm" data-term="rag">RAG</span> to look things up before they answer &mdash; which quietly runs on <span class="jterm" data-term="embeddings">embeddings</span> and mostly exists to work around the <span class="jterm" data-term="contextwindow">context window</span>. Turn the <span class="jterm" data-term="temperature">temperature</span> up and replies get more creative, but also more prone to <span class="jterm" data-term="hallucination">hallucination</span>. Teams reach for <span class="jterm" data-term="finetuning">fine-tuning</span> less than they used to, and increasingly wire models into real tools through <span class="jterm" data-term="mcp">MCP</span> so an <span class="jterm" data-term="agents">agent</span> can actually get work done.</p>
+            </div>
+          </div>
+          <div class="dmx-saved" data-dm-saved>
+            <div class="dmx-saved-head">Saved terms <span class="dmx-saved-count" id="dmCount">0</span></div>
+            <p class="dmx-saved-empty" id="dmEmpty">Open a term and hit Save &mdash; your list builds here.</p>
+            <div class="dmx-saved-rows" id="dmChips"></div>
+          </div>
+          <p class="dmx-note">Saving is illustrative here &mdash; nothing is stored. In the real app your saved terms sync across the web app and extension.</p>
+          <div id="dmPopRoot"></div>
+          <div id="dmModalRoot"></div>
+          <div id="dmToastRoot"></div>
+        </div>
+
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">How It's Built</div>

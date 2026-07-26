@@ -1,13 +1,13 @@
 /* Tokens */
 :root{
-  --bg:#fcfcfa; --ink:#161618; --muted:#9b9b96;
+  --bg:#fcfcfa; --ink:#161618; --ink-2:#54544e; --muted:#9b9b96;
   --rule:rgba(20,20,20,.10); --link-faint:rgba(20,20,20,.30); --sel:#e9e8e2;
   --font-body:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){
-  html:not([data-theme="light"]){ --bg:#151516; --ink:#e9e8e3; --muted:#83827b; --rule:rgba(255,255,255,.13); --link-faint:rgba(255,255,255,.28); --sel:#2c2c29; }
+  html:not([data-theme="light"]){ --bg:#151516; --ink:#e9e8e3; --ink-2:#b0afa8; --muted:#83827b; --rule:rgba(255,255,255,.13); --link-faint:rgba(255,255,255,.28); --sel:#2c2c29; }
 }
-html[data-theme="dark"]{ --bg:#151516; --ink:#e9e8e3; --muted:#83827b; --rule:rgba(255,255,255,.13); --link-faint:rgba(255,255,255,.28); --sel:#2c2c29; }
+html[data-theme="dark"]{ --bg:#151516; --ink:#e9e8e3; --ink-2:#b0afa8; --muted:#83827b; --rule:rgba(255,255,255,.13); --link-faint:rgba(255,255,255,.28); --sel:#2c2c29; }
 
 /* Base */
 html{-webkit-text-size-adjust:100%;}
@@ -51,6 +51,73 @@ h2{font-size:1.0625rem;font-weight:600;margin:3.25em 0 0;}
 
 /* Local time */
 .local-time{color:var(--muted);margin:3.5em 0 0;font-size:.9375rem;}
+
+/* ==========================================================================
+   Home — selling sections: proof strip, capability blocks, selected work
+   Adapts PORTFOLIO-SPEC §4 into the current hairline/flat-type system
+   (no cards, no shadows, no new accent colour — the superseded card design
+   is deliberately not revived; distinction comes from rules, weight, spacing).
+   ========================================================================== */
+
+.u-vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+/* Each section owns its top gap; reset the global h2 3.25em so the visible
+   "Selected Work" heading doesn't double it (hidden h2s carry no box). */
+.home-section{margin-top:3.25em;}
+.home-section > h2{margin:0;}
+
+/* Selected outcomes — the headline wins, each a bold one-line claim a scanner
+   can absorb alone, with a supporting sentence in --ink-2 for the reader who
+   slows down. Hairline-separated, no hover (not links). Emphasis is carried by
+   weight + colour contrast, not by size — the size jump is saved for numbers. */
+.outcome{padding-top:.95em;border-top:1px solid var(--rule);}
+.outcome + .outcome{margin-top:.95em;}
+.outcome h3{font-size:1.0625rem;font-weight:600;margin:0;line-height:1.4;}
+.outcome p{margin:.3em 0 0;color:var(--ink-2);font-size:.9375rem;line-height:1.55;}
+
+/* Impact in numbers — the page's one loud moment. Everything else sits at 17px;
+   here the numerals jump to display scale so the proof reads in a glance. Plain
+   hairline grid, no cards (the superseded tile design stays retired — D-1). */
+.metric-grid{margin:0;display:grid;grid-template-columns:repeat(3,1fr);column-gap:1.6em;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.metric{padding:1.1em 0;}
+.metric-value{margin:0;font-size:2rem;font-weight:600;letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums;}
+.metric-unit{font-size:1rem;font-weight:500;color:var(--muted);letter-spacing:0;}
+/* Label: what the number is (readable), then where it came from (fainter, own
+   line) — the source anchors each stat to a real product so it can't read as a
+   floating figure. */
+.metric-label{margin:.4em 0 0;color:var(--ink-2);font-size:.875rem;line-height:1.45;}
+.metric-src{display:block;color:var(--muted);}
+/* Three across is tight on a phone; stack to a hairline-separated list, number
+   above its label, so each stat stays a clean self-contained unit. */
+@media (max-width:480px){
+  .metric-grid{grid-template-columns:1fr;border-top:0;border-bottom:0;}
+  .metric{padding:.95em 0;border-top:1px solid var(--rule);}
+  .metric:last-child{border-bottom:1px solid var(--rule);}
+}
+
+/* Selected work — the 3 strongest studies with an outcome line each, so a
+   visitor who never clicks Work still gets the signal. Reuses the Work-page
+   hairline-row language; whole row is one link. */
+.feat-list{list-style:none;padding:0;margin:1.2em 0 0;border-top:1px solid var(--rule);}
+.feat{border-bottom:1px solid var(--rule);}
+.feat-link{display:block;padding:.95em 0;background-image:none;color:var(--ink);}
+.feat-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+.feat-title{font-weight:500;padding-bottom:1px;
+  background-image:linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--link-faint),var(--link-faint));
+  background-size:0 1px,0 1px;background-position:0 100%,0 100%;background-repeat:no-repeat;
+  transition:background-size .32s cubic-bezier(.4,0,.2,1);}
+.feat-meta{color:var(--muted);white-space:nowrap;font-size:.9375rem;}
+.feat-desc{display:block;margin-top:.3em;color:var(--ink-2);font-size:.9375rem;line-height:1.55;}
+.feat-link:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px;}
+/* Underline the title on hover only — the row's one affordance, matching the
+   site's link treatment. Gated so touch taps don't trigger a false hover. */
+@media (hover:hover) and (pointer:fine){
+  .feat-link:hover .feat-title{background-size:100% 1px,100% 1px;}
+}
+/* The long "Affable → Bazaarvoice · 2021–2023" meta can't share a line with the
+   title on narrow screens; let it wrap right-aligned (same rule as .cs-meta). */
+@media (max-width:480px){
+  .feat-meta{white-space:normal;text-align:right;}
+}
 
 @media (prefers-reduced-motion:reduce){
   *,::before,::after{transition-duration:.01ms!important;}
@@ -136,6 +203,126 @@ h2{font-size:1.0625rem;font-weight:600;margin:3.25em 0 0;}
 .cs-honest-miss{font-style:italic;color:var(--muted);}
 
 .cs-tags{display:flex;gap:14px;flex-wrap:wrap;margin-top:1.5em;color:var(--muted);font-size:.9375rem;}
+
+/* ==========================================================================
+   Decoder live demo (Work page) — a faithful port of the real AI Decoder UI
+   (aidecoder.app): its own tokens, Inter + Newsreader type, tier badges, the
+   select-to-explain popover, and the full-card modal with lens tabs. Scoped to
+   .dmx so none of it leaks into the portfolio's own monochrome design.
+   ========================================================================== */
+
+.dmx{
+  --bg:#fdfdfc;--surface:#ffffff;--surface-2:#fbfbfc;--surface-3:#f7f7f8;--hover:#eef1f6;--hover-strong:#ebecef;
+  --text:#0e0f12;--text-2:#22252b;--text-3:#3f4249;--text-4:#4a4e55;--muted:#6a6e75;--muted-2:#787c83;--faint:#9a9ea5;--faint-2:#c6c9ce;
+  --border:rgba(20,24,33,.10);--border-2:rgba(20,24,33,.14);--border-3:rgba(20,24,33,.18);--border-strong:rgba(20,24,33,.30);--hairline-2:rgba(20,24,33,.08);
+  --save-text:#4a7c59;--toast-bg:#17181b;--toast-text:#fff;--accent:#4f77a6;--hint-border:1px dotted rgba(20,24,33,.38);
+  --font-primary:"Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --font-secondary:"Newsreader",Georgia,"Times New Roman",serif;
+  position:relative;margin:0 0 2em;font-family:var(--font-primary);color:var(--text);letter-spacing:-.006em;
+}
+html[data-theme="dark"] .dmx{
+  --bg:#131519;--surface:#1c1f25;--surface-2:#191c21;--surface-3:#23272e;--hover:#2b3038;--hover-strong:#333944;
+  --text:#f4f5f7;--text-2:#e6e8ec;--text-3:#c6cad1;--text-4:#b2b7bf;--muted:#969ba3;--muted-2:#858a92;--faint:#6d727a;--faint-2:#565b63;
+  --border:rgba(255,255,255,.12);--border-2:rgba(255,255,255,.17);--border-3:rgba(255,255,255,.22);--border-strong:rgba(255,255,255,.34);--hairline-2:rgba(255,255,255,.10);
+  --save-text:oklch(0.82 0.1 150);--toast-bg:#f4f5f7;--toast-text:#131519;--hint-border:1px dotted rgba(255,255,255,.42);
+}
+@media (prefers-color-scheme:dark){
+  html:not([data-theme="light"]) .dmx{
+    --bg:#131519;--surface:#1c1f25;--surface-2:#191c21;--surface-3:#23272e;--hover:#2b3038;--hover-strong:#333944;
+    --text:#f4f5f7;--text-2:#e6e8ec;--text-3:#c6cad1;--text-4:#b2b7bf;--muted:#969ba3;--muted-2:#858a92;--faint:#6d727a;--faint-2:#565b63;
+    --border:rgba(255,255,255,.12);--border-2:rgba(255,255,255,.17);--border-3:rgba(255,255,255,.22);--border-strong:rgba(255,255,255,.34);--hairline-2:rgba(255,255,255,.10);
+    --save-text:oklch(0.82 0.1 150);--toast-bg:#f4f5f7;--toast-text:#131519;--hint-border:1px dotted rgba(255,255,255,.42);
+  }
+}
+.dmx .dsp{font-family:var(--font-secondary);}
+.dmx button{font-family:inherit;color:inherit;-webkit-tap-highlight-color:transparent;}
+.dmx button:active{transform:scale(.98);}
+
+.dmx-kicker{margin:0;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+.dmx-lead{margin:.55em 0 1.15em;color:var(--text-3);font-size:.875rem;line-height:1.6;}
+.dmx-hintword{border-bottom:var(--hint-border);}
+
+/* Faux browser frame — sets the scene: Decoder underlines terms on a real page. */
+.dmx-frame{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:0 2px 10px rgba(20,24,33,.04);}
+.dmx-frame-bar{display:flex;align-items:center;gap:10px;padding:9px 13px;background:var(--surface-3);border-bottom:1px solid var(--hairline-2);}
+.dmx-frame-dots{display:inline-flex;gap:6px;}
+.dmx-frame-dots i{width:9px;height:9px;border-radius:50%;background:var(--faint-2);}
+.dmx-frame-url{font-size:11.5px;color:var(--muted-2);letter-spacing:0;}
+.dmx-page{padding:20px 22px 22px;}
+.dmx-page-h{margin:0 0 12px;font-weight:600;font-size:17px;color:var(--text-2);}
+.dmx-article{margin:0;font-size:16px;line-height:1.72;color:var(--text-2);}
+
+/* Underlined AI term (from the extension content script). */
+.dmx .jterm{border-bottom:var(--hint-border);cursor:pointer;border-radius:2px;transition:background .12s;}
+.dmx .jterm:hover{background:var(--hover);}
+.dmx .jterm.is-open{background:var(--hover);}
+
+/* Tier badge — Core/Rising/Fading/Historical, colours from the real app. */
+.dmx .badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-primary);font-weight:600;text-transform:uppercase;border-radius:20px;color:var(--stc);background:var(--stbg);}
+.dmx .st-core{--stc:oklch(0.5 0.085 155);--stbg:oklch(0.955 0.03 155);}
+.dmx .st-rising{--stc:oklch(0.56 0.12 55);--stbg:oklch(0.955 0.05 72);}
+.dmx .st-fading{--stc:oklch(0.55 0.05 250);--stbg:oklch(0.955 0.022 250);}
+.dmx .st-historical{--stc:oklch(0.5 0 0);--stbg:oklch(0.925 0 0);}
+html[data-theme="dark"] .dmx .st-core{--stc:oklch(0.82 0.11 155);--stbg:oklch(0.33 0.05 155);}
+html[data-theme="dark"] .dmx .st-rising{--stc:oklch(0.83 0.12 68);--stbg:oklch(0.35 0.06 60);}
+html[data-theme="dark"] .dmx .st-fading{--stc:oklch(0.82 0.07 250);--stbg:oklch(0.33 0.04 250);}
+html[data-theme="dark"] .dmx .st-historical{--stc:oklch(0.78 0 0);--stbg:oklch(0.34 0 0);}
+@media (prefers-color-scheme:dark){
+  html:not([data-theme="light"]) .dmx .st-core{--stc:oklch(0.82 0.11 155);--stbg:oklch(0.33 0.05 155);}
+  html:not([data-theme="light"]) .dmx .st-rising{--stc:oklch(0.83 0.12 68);--stbg:oklch(0.35 0.06 60);}
+  html:not([data-theme="light"]) .dmx .st-fading{--stc:oklch(0.82 0.07 250);--stbg:oklch(0.33 0.04 250);}
+  html:not([data-theme="light"]) .dmx .st-historical{--stc:oklch(0.78 0 0);--stbg:oklch(0.34 0 0);}
+}
+
+/* Save button (full card). */
+.dmx .savebtn{border:1px solid var(--accent);border-radius:10px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;background:var(--accent);color:#fff;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s,border-color .2s;}
+.dmx .savebtn.is-saved{background:#eef4ee;color:#4a7c59;border-color:#cfe0cf;}
+html[data-theme="dark"] .dmx .savebtn.is-saved{background:oklch(0.30 0.045 150);color:oklch(0.85 0.1 150);border-color:oklch(0.42 0.05 150);}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .dmx .savebtn.is-saved{background:oklch(0.30 0.045 150);color:oklch(0.85 0.1 150);border-color:oklch(0.42 0.05 150);}}
+
+/* Hover helpers ported from the app. */
+.dmx .rel:hover{border-color:var(--border-3);background:var(--hover-strong);}
+.dmx .popclose:hover{color:var(--muted-2);}
+.dmx .h-surf2:hover{background:var(--surface-2);}
+.dmx .h-surf3:hover{background:var(--surface-3);}
+.dmx .h-close:hover{background:var(--hover);}
+.dmx .rm:hover{color:var(--save-text);}
+
+/* Saved tray. */
+.dmx-saved{margin-top:1.5em;padding-top:1.25em;border-top:1px solid var(--border);}
+.dmx-saved-head{font-size:12px;letter-spacing:.02em;color:var(--muted);display:flex;align-items:center;gap:8px;margin-bottom:.75em;}
+.dmx-saved-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:20px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;}
+.dmx-saved-empty{margin:0;color:var(--muted);font-size:13px;}
+.dmx-saved-rows{display:flex;flex-direction:column;gap:6px;}
+.dmx-srow{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surface-3);border:1px solid var(--hairline-2);border-radius:9px;}
+.dmx-srow .badge{flex:none;}
+.dmx-sname{flex:1;min-width:0;text-align:left;background:none;border:none;cursor:pointer;font-family:var(--font-secondary);font-weight:600;font-size:15px;color:var(--text-2);line-height:1.1;}
+.dmx-sname:hover{color:var(--accent);}
+.dmx-srm{flex:none;background:none;border:none;cursor:pointer;color:var(--faint);font-size:13px;font-weight:500;padding:4px 6px;}
+.dmx-srm:hover{color:var(--save-text);}
+
+.dmx-note{margin:1.4em 0 0;font-size:12.5px;line-height:1.5;color:var(--faint);}
+
+/* Animations (from the app). */
+@keyframes dmx-rise{from{opacity:0;transform:translate(-50%,8px) scale(.96);}to{opacity:1;transform:translate(-50%,0) scale(1);}}
+@keyframes dmx-pop{from{opacity:0;transform:translateY(10px) scale(.97);}to{opacity:1;transform:none;}}
+@keyframes dmx-bd{from{opacity:0;}to{opacity:1;}}
+@keyframes dmx-toastin{from{opacity:0;transform:translate(-50%,12px);}to{opacity:1;transform:translate(-50%,0);}}
+@keyframes dmx-savepop{0%{transform:scale(.4);opacity:0;}55%{transform:scale(1.25);}100%{transform:scale(1);opacity:1;}}
+@keyframes dmx-sl{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+.dmx-savepop{display:inline-block;animation:dmx-savepop .4s cubic-bezier(.3,1.3,.4,1) both;}
+.dmx-mstack>*{animation:dmx-sl .5s cubic-bezier(.2,.75,.3,1) both;}
+.dmx-mstack>*:nth-child(1){animation-delay:.04s;}
+.dmx-mstack>*:nth-child(2){animation-delay:.1s;}
+.dmx-mstack>*:nth-child(3){animation-delay:.16s;}
+@media (prefers-reduced-motion:reduce){
+  .dmx-pop-el,.dmx-backdrop,.dmx-modal-card,.dmx-savepop,.dmx-mstack>*{animation:none!important;}
+}
+
+@media (max-width:520px){
+  .dmx-page{padding:16px 15px 18px;}
+  .dmx-article{font-size:15px;}
+}
 
 /* ==========================================================================
    Journey page
