@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Work — Sumit Deshmukh</title>
+<title>Work · Sumit Deshmukh</title>
 <meta name="description" content="Product leadership case studies from Affable and Bazaarvoice, plus AI products I design and spec solo, directing AI agents through the engineering.">
 <link rel="canonical" href="https://sumitdeshmukh.com/work.html">
-<meta property="og:title" content="Work — Sumit Deshmukh">
+<meta property="og:title" content="Work · Sumit Deshmukh">
 <meta property="og:description" content="Product leadership case studies from Affable and Bazaarvoice, plus AI products I design and spec solo, directing AI agents through the engineering.">
 <meta property="og:url" content="https://sumitdeshmukh.com/work.html">
 <meta property="og:type" content="website">
@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="./assets/css/site.css">
 <script src="./assets/js/site.js" defer></script>
 <script src="./assets/js/work.js" defer></script>
+<script src="./assets/js/extract.js" defer></script>
 <script src="./assets/js/decoder-demo.js" defer></script>
 </head>
 <body>
@@ -186,7 +187,7 @@
         <div class="cs-deep">
           <div class="cs-beat-label">In Depth</div>
           <p>The build-versus-buy framework assessed long-term strategy rather than immediate needs. Payments wasn't just a one-off checkbox; within 18 months, we would need to handle sampling payouts, ambassador incentives, and affiliate commissions and a new vendor integration would have to be redone for each of them.</p>
-          <p>There was reasonable pushback. Finance preferred a specific vendor, Legal preferred the smallest possible compliance surface, and a credible vendor already existed for this exact use case, so taking on money-movement risk voluntarily required strong justification. The framework resolved it on a narrow point: the vendor route solved the immediate deal and left the roadmap use cases — payouts, incentives, commissions, each requiring its own re-integration.</p>
+          <p>There was reasonable pushback. Finance preferred a specific vendor, Legal preferred the smallest possible compliance surface, and a credible vendor already existed for this exact use case, so taking on money-movement risk voluntarily required strong justification. The framework resolved it on a narrow point: the vendor route solved the immediate deal and left the roadmap use cases of payouts, incentives, and commissions, each requiring its own re-integration.</p>
           <p>The build scope covered admin-led managed transfers, full transaction history, and a new compliance path defined with Legal and FinOps. After launch it addressed 28% of previously lost Affable deals and reopened 24 stalled commercial conversations, and the platform now serves as the payment rail under Integrated Sampling.</p>
         </div>
         <div class="cs-tags">
@@ -286,69 +287,72 @@
         <span class="cs-ind" aria-hidden="true">+</span>
       </button>
       <div class="cs-panel" id="cs-decoder">
-        <p class="cs-oneliner" tabindex="-1">A dictionary for the language of AI: a web app and Chrome extension that underlines AI terms on any page.</p>
+        <p class="cs-oneliner" tabindex="-1">A plain-language dictionary for AI jargon: a web app and Chrome extension that underlines terms as you read and explains any sentence you highlight, grounded in the glossary.</p>
         <p class="cs-visit"><a href="https://aidecoder.app" rel="noopener">Try it live at aidecoder.app →</a> <a href="https://github.com/sumitd07/AI-Decoder" rel="noopener">GitHub →</a></p>
-        <div class="cs-visual cs-visual-media">
-          <video class="cs-visual-vid" width="1088" height="646" data-poster="assets/img/decoder-poster.jpg" preload="none" loop muted playsinline aria-label="Screen recording of the Decoder extension underlining and defining AI terms on a page">
-            <source src="assets/img/decoder.webm" type="video/webm">
-            <source src="assets/img/decoder.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <!-- Live in-page demo — a faithful port of the Decoder's own popover and
-             full-card UI (fonts, tier badges, lens tabs, related links) driven by the
-             real glossary data. Progressive enhancement: the block ships hidden and
-             decoder-demo.js reveals it; save/remove is in-memory only. -->
+        <!-- "How it works" demo — the sentence-decode surface from aidecoder.app,
+             running in the page. Extraction (assets/js/extract.js) is the extension's
+             real code, live in the browser; the model's answers are captured from the
+             live /api/explain endpoint and baked into decoder-demo.js (no backend).
+             Ships hidden; decoder-demo.js reveals it. -->
         <div class="dmx" data-dm-demo hidden>
-          <div class="dmx-shell">
-            <div class="dmx-head">
-              <span class="dmx-badge"><span class="dmx-live-dot" aria-hidden="true"></span>Live demo</span>
-              <span class="dmx-head-note">Interactive &mdash; try it right here, no install</span>
+          <div class="demo-wrap">
+            <div class="demo-bar">
+              <span class="demo-badge"><span class="demo-live-dot" aria-hidden="true"></span>Interactive</span>
+              <span class="demo-bar-note">The same decode you get in the extension.</span>
             </div>
-            <div class="dmx-body">
-              <p class="dmx-lead">Decoder subtly underlines AI terms on any page. Click an <span class="dmx-hintword">underlined</span> term to understand it in place, save it, or open the full card.</p>
-              <div class="dmx-frame">
-                <div class="dmx-frame-bar">
-                  <span class="dmx-frame-dots"><i></i><i></i><i></i></span>
-                  <span class="dmx-frame-url">medium.com/how-does-rag-work</span>
-                </div>
-                <div class="dmx-page">
-                  <p class="dmx-page-h">How does RAG work?</p>
-                  <p class="dmx-article">Nearly every AI product today is a mix of the same handful of ideas. Most assistants lean on <span class="jterm" data-term="rag">RAG</span> to look things up before they answer &mdash; which quietly runs on <span class="jterm" data-term="embeddings">embeddings</span> and mostly exists to work around the <span class="jterm" data-term="contextwindow">context window</span>. Turn the <span class="jterm" data-term="temperature">temperature</span> up and replies get more creative, but also more prone to <span class="jterm" data-term="hallucination">hallucination</span>. Teams reach for <span class="jterm" data-term="finetuning">fine-tuning</span> less than they used to, and increasingly wire models into real tools through <span class="jterm" data-term="mcp">MCP</span> so an <span class="jterm" data-term="agents">agent</span> can actually get work done.</p>
+            <div class="demo-inner">
+              <div class="demo-toprow">
+                <span class="demo-kicker">Sample Article</span>
+                <span id="demoHint" class="demo-hint">Select a sentence to decode it.</span>
+              </div>
+              <div id="demoStage" class="demo-stage">
+                <div id="demoDoc" class="demo-doc">
+                  <h2 class="dsp">Notes on shipping a retrieval stack</h2>
+                  <p>Most teams reach for a bigger model when the answers go wrong. In our case the answers were wrong because the context was wrong, and no amount of model changed that.</p>
+                  <p>We reduced hallucination by tightening the retriever's top-k and reranking before the context is assembled. That single change did more than a month of prompt work.</p>
+                  <h3>Two columns</h3>
+                  <div class="demo-cols">
+                    <p>The embedding index was rebuilt offline every night, which meant a stale card could sit in produc&shy;tion for a day. Fine-tuning was never on the table; the failure mode was retrieval, not gener&shy;ation.<sup>1</sup></p>
+                    <p>Chunking is where the rest of the tuning time went. A chunk that spans two ideas retrieves for both and answers neither, e.g. a paragraph that opens on latency and closes on cost.</p>
+                  </div>
+                  <h3>A code block</h3>
+                  <p>The guard below runs before the model call, so a refusal costs nothing:</p>
+                  <pre>if (sentence.length &gt; MAX_SENTENCE) return send(res, 400, { error: 'sentence_too_long' });</pre>
+                  <p>An agent that plans its own retrieval loop is a different product. We kept the pipeline fixed so that two runs stay comparable.</p>
+                  <h3>A table</h3>
+                  <table>
+                    <tr><th>Change</th><th>Effect</th></tr>
+                    <tr><td>Reranking on</td><td>Precision up, latency up by 180ms</td></tr>
+                    <tr><td>Top-k 8 &rarr; 5</td><td>Fewer distractors in the prompt window[2]</td></tr>
+                  </table>
+                  <p class="demo-fn">1. Measured on 39 rows. 2. The reader never sees the retrieved set.</p>
+                  <h3>A dark section</h3>
+                  <div class="demo-dark">
+                    <p>Quantization let the model run on one card, and the quality loss was smaller than the latency win. We shipped it the same week.</p>
+                  </div>
                 </div>
               </div>
-              <div class="dmx-saved" data-dm-saved>
-                <div class="dmx-saved-head">Saved terms</div>
-                <p class="dmx-saved-empty" id="dmEmpty">Open a term and hit Save &mdash; your list builds here.</p>
-                <div class="dmx-saved-rows" id="dmChips"></div>
-              </div>
-              <p class="dmx-note">Saving is illustrative here &mdash; nothing is stored. In the real app your saved terms sync across the web app and extension.</p>
+              <p class="demo-fine">This article is awkward on purpose: two columns, a code block, a table, footnote markers, and a word split across a line. A selection that picks any of that up is repaired to one clean sentence before it is decoded. A selection inside the code block offers no Decode button.</p>
+              <p class="demo-fine demo-fine--faint">Extraction runs live in your browser. The explanations are captured from the model at aidecoder.app, where the extension decodes any sentence you highlight.</p>
             </div>
           </div>
-          <div id="dmPopRoot"></div>
-          <div id="dmModalRoot"></div>
-          <div id="dmToastRoot"></div>
         </div>
 
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">How It's Built</div>
-            <p>Operated as a single-person product team: I maintain a strategy document and taxonomy, enforce a content style contract with automated validation, and manage the full stack, including Supabase with row-level security and store deployment.</p>
+            <p>The explain feature runs on grounded retrieval: it pulls the few glossary cards a sentence depends on, and a small model restates the sentence in plain English from only those cards. When the glossary doesn't cover a term, the answer says so.</p>
           </div>
           <div class="cs-beat">
             <div class="cs-beat-label">In the Weeds</div>
-            <p>The content pipeline runs scheduled batch generation against a database, sized for a glossary in the thousands. Hand-curation stopped scaling at a few hundred entries, which forced the redesign.</p>
+            <p>A gold set of hand-answered sentences grades every prompt change, and one invented answer fails the run. The scores drive the decisions that matter: which model ships, when to explain a sentence or decline it, and how grounding is enforced.</p>
           </div>
         </div>
         <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
-        <div class="cs-callout">
-          <div class="cs-beat-label">Field Note</div>
-          <p>Manual authorship had caused 248 entries to drift from the content style contract, resulting in inconsistent tone and missing data. I standardized the dataset and implemented an automated validation gate to prevent future regressions.</p>
-        </div>
         <div class="cs-tags">
-          <span>Content Pipeline</span>
-          <span>Data Quality</span>
-          <span>Chrome Extension</span>
+          <span>RAG</span>
+          <span>Evals</span>
+          <span>Grounding</span>
         </div>
       </div>
     </div>
