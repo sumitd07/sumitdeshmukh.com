@@ -340,11 +340,11 @@
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">How It's Built</div>
-            <p>The explain feature runs on grounded retrieval: it pulls the few glossary cards a sentence depends on, and a small model restates the sentence in plain English from only those cards. Before the model is called, a separate check decides whether the sentence is about AI at all and whether each term is used in its AI sense, so a sentence about a college dropout is declined without a model call. When the glossary doesn't cover a term, the answer keeps the writer's own word and says it isn't covered.</p>
+            <p>The explain feature runs on grounded retrieval. It pulls the few glossary cards a sentence depends on, and a small model rewrites the sentence in plain English using only those cards. Before that, Jev, a yes/no classifier from TypeSafe, runs as a separate check. It asks two questions: is this sentence about AI, and is each term used in its AI sense? If either answer is no, Decoder declines the sentence and never calls the main model, so a sentence about a college dropout gets no explanation. When the glossary doesn't cover a term, the answer keeps the writer's own word and says it isn't covered.</p>
           </div>
           <div class="cs-beat">
             <div class="cs-beat-label">In the Weeds</div>
-            <p>A gold set of hand-answered sentences, including real-world sentences that only sound like AI, grades every prompt change. When two judge models disagreed about which answers were invented, I labelled those rows blind myself and made the judge that matched my labels the standard. The same scores settled the model choice: the larger model grounded slightly better but took about ten seconds per answer, so I shipped the small model with the refusal check, which answers in about two seconds.</p>
+            <p>I keep a set of sentences I've answered by hand, including everyday sentences that only sound like AI, and every prompt change is scored against it. A second model does the grading, and when I tried two graders they flagged different answers as made up. I went through those answers myself without looking at the grades and kept the grader that agreed with me most. The larger model gave slightly better answers but took about ten seconds each, which is too slow while you're reading. I shipped the smaller model with Jev in front of it, and answers come back in about two seconds.</p>
           </div>
         </div>
         <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
