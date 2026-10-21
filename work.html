@@ -358,6 +358,34 @@
     </div>
 
     <div class="cs-row">
+      <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-clause">
+        <span class="cs-title">Clause</span>
+        <span class="cs-meta">Work in progress</span>
+        <span class="cs-ind" aria-hidden="true">+</span>
+      </button>
+      <div class="cs-panel" id="cs-clause">
+        <p class="cs-oneliner" tabindex="-1">Answers questions about a health insurance policy, such as whether a treatment is covered, from when, up to what limit and what you will pay, and quotes the policy wording behind every line.</p>
+        <p class="cs-visit"><a href="https://sumitd07.github.io/Clause/" rel="noopener">See it at sumitd07.github.io/Clause →</a> <a href="https://github.com/sumitd07/Clause" rel="noopener">GitHub →</a></p>
+        <div class="cs-beats">
+          <div class="cs-beat">
+            <div class="cs-beat-label">How It's Built</div>
+            <p>The policy's rules are pulled out once into a list, each quoting the policy's own words, and I review that list before it is used. For each question, AI works out what the question is about, and plain code applies every rule on the list and does the money math, so the AI never calculates an amount. When a detail is missing, Clause says what it needs and asks the one question that would settle it.</p>
+          </div>
+          <div class="cs-beat">
+            <div class="cs-beat-label">In the Weeds</div>
+            <p>The code that works out answers and the fixed answer form are built and tested on a made-up policy. Real policies and the AI steps come next. The test compares Clause with Claude reading the whole policy on questions I worked out by hand, and an answer counts only when the verdict, the amount to the rupee and the cited clauses are all right. I am also testing whether Jev, the yes/no classifier I use in Decoder, can handle the simpler checks so fewer questions need a large model.</p>
+          </div>
+        </div>
+        <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
+        <div class="cs-tags">
+          <span>Evals</span>
+          <span>Citations</span>
+          <span>Insurance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-row">
       <button type="button" class="cs-toggle" aria-expanded="true" aria-controls="cs-expense-tracker">
         <span class="cs-title">Expense Tracker</span>
         <span class="cs-meta">Working build</span>
