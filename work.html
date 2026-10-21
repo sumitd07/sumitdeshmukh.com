@@ -340,11 +340,11 @@
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-label">How It's Built</div>
-            <p>The explain feature runs on grounded retrieval: it pulls the few glossary cards a sentence depends on, and a small model restates the sentence in plain English from only those cards. When the glossary doesn't cover a term, the answer says so.</p>
+            <p>The explain feature runs on grounded retrieval: it pulls the few glossary cards a sentence depends on, and a small model restates the sentence in plain English from only those cards. Before the model is called, a separate check decides whether the sentence is about AI at all and whether each term is used in its AI sense, so a sentence about a college dropout is declined without a model call. When the glossary doesn't cover a term, the answer keeps the writer's own word and says it isn't covered.</p>
           </div>
           <div class="cs-beat">
             <div class="cs-beat-label">In the Weeds</div>
-            <p>A gold set of hand-answered sentences grades every prompt change, and one invented answer fails the run. The scores drive the decisions that matter: which model ships, when to explain a sentence or decline it, and how grounding is enforced.</p>
+            <p>A gold set of hand-answered sentences, including real-world sentences that only sound like AI, grades every prompt change. When two judge models disagreed about which answers were invented, I labelled those rows blind myself and made the judge that matched my labels the standard. The same scores settled the model choice: the larger model grounded slightly better but took about ten seconds per answer, so I shipped the small model with the refusal check, which answers in about two seconds.</p>
           </div>
         </div>
         <p class="cs-built-note">Designed, spec'd, and QA'd by me; engineered by AI agents against my decision log and test plan.</p>
@@ -352,6 +352,7 @@
           <span>RAG</span>
           <span>Evals</span>
           <span>Grounding</span>
+          <span>Guardrails</span>
         </div>
       </div>
     </div>
